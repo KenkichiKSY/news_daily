@@ -3,6 +3,7 @@
 """
 import schedule
 import time
+import os
 from datetime import datetime
 from news_fetcher import NewsFetcher
 from news_summarizer import NewsSummarizer
@@ -69,17 +70,27 @@ class NewsScheduler:
 
     def run_once(self):
         """
-        一度だけ実行（テスト用）
+        一度だけ実行（テスト用・GitHub Actions用）
         """
-        print("🧪 テスト実行モード: 一度だけ実行します")
+        print("🧪 単発実行モード: 一度だけ実行します")
         self.run_news_job()
+
+    def get_run_mode(self):
+        """
+        実行モードを取得（環境変数で制御）
+        - daemon: 無限ループでスケジュール実行（ローカル用）
+        - once: 一度だけ実行（GitHub Actions用）
+        """
+        return os.getenv("RUN_MODE", "daemon")
 
 
 if __name__ == "__main__":
     scheduler = NewsScheduler()
+    mode = scheduler.get_run_mode()
 
-    # テスト実行する場合：
-    # scheduler.run_once()
-
-    # スケジューラーを起動する場合：
-    scheduler.start()
+    if mode == "once":
+        # GitHub Actions用: 一度だけ実行
+        scheduler.run_once()
+    else:
+        # ローカル用: 無限ループでスケジュール実行
+        scheduler.start()
