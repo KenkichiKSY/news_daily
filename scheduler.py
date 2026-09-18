@@ -5,10 +5,20 @@ import schedule
 import time
 import os
 from datetime import datetime
+from dotenv import load_dotenv
+import config
+
+# .env / 環境変数（GitHub Actions Secretsなど）から設定を読み込む
+load_dotenv()
+config.GMAIL_ADDRESS = os.getenv("GMAIL_ADDRESS", config.GMAIL_ADDRESS)
+config.GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", config.GMAIL_APP_PASSWORD)
+config.RECIPIENT_EMAIL = os.getenv("RECIPIENT_EMAIL", config.RECIPIENT_EMAIL)
+config.NEWS_API_KEY = os.getenv("NEWS_API_KEY", config.NEWS_API_KEY)
+config.ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", config.ANTHROPIC_API_KEY)
+
 from news_fetcher import NewsFetcher
 from news_summarizer import NewsSummarizer
 from email_sender import EmailSender
-import config
 
 
 class NewsScheduler:
