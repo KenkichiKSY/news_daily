@@ -13,7 +13,7 @@ class NewsSummarizer:
         if not config.ANTHROPIC_API_KEY:
             raise ValueError("ANTHROPIC_API_KEY が設定されていません")
         self.client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
-        self.model = "claude-3-5-sonnet-20241022"
+        self.model = "claude-sonnet-5"
 
     def summarize_article(self, article: Dict) -> str:
         """
