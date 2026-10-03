@@ -48,3 +48,6 @@ Thumbs.db
 # プロジェクト固有
 news_daily.log
 *.tmp
+
+# 誤って入れ子になったリポジトリ
+daily-news-digest/
