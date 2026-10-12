@@ -17,6 +17,10 @@ ANTHROPIC_API_KEY = ""  # Anthropic API キー
 # スケジューラー設定
 SCHEDULE_TIME = "07:00"  # 実行時刻（朝7時）
 
+# 信頼できるニュースサイト（雑多なブログやプレスリリースを除外するため）
+JP_NEWS_DOMAINS = "jiji.com,asahi.com,afpbb.com"
+WORLD_NEWS_DOMAINS = "bbc.co.uk,aljazeera.com"
+
 # キーワード設定
 KEYWORDS = {
     "biohacking_business": [
@@ -47,6 +51,17 @@ KEYWORDS = {
         "古着販売",
         "サスティナブルファッション",
         "リサイクルファッション",
+    ],
+    # 文字列の代わりに辞書を書くと、NewsAPIのパラメータ（domains, searchIn など）を直接指定できる
+    "stock_market": [
+        {"q": "株 OR 日経平均 OR 円相場 OR 東証", "searchIn": "title", "domains": JP_NEWS_DOMAINS},
+        {"q": 'stocks OR "stock market" OR "Wall Street" OR Nasdaq OR "S&P 500"', "searchIn": "title"},
+    ],
+    "japan_news": [
+        {"domains": JP_NEWS_DOMAINS},
+    ],
+    "world_news": [
+        {"domains": WORLD_NEWS_DOMAINS},
     ],
 }
 
