@@ -24,12 +24,15 @@ KEYWORDS = {
         "biohacking business",
         "バイオテクノロジー スタートアップ",
         "生物工学 起業",
+        "NuSkin",
+        "アンチエイジング ビジネス",
+        "再生医療 ビジネス",
     ],
-    "claude_code": [
-        "ClaudeCode",
-        "Claude Code",
-        "Claude 活用方法",
-        "Claude AI ビジネス",
+    "generative_ai": [
+        "generative AI",
+        "生成AI",
+        'OpenAI OR Anthropic OR "Google Gemini"',
+        '"large language model"',
     ],
     "sports_business": [
         "スポーツ ビジネス",

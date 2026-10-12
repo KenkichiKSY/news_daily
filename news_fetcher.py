@@ -14,7 +14,7 @@ class NewsFetcher:
         self.api_key = config.NEWS_API_KEY
         self.api_url = config.NEWS_API_URL
 
-    def fetch_news(self, keyword: str, days: int = 1) -> List[Dict]:
+    def fetch_news(self, keyword: str, days: int = 2) -> List[Dict]:
         """
         指定されたキーワードでニュースを取得
 
@@ -35,7 +35,6 @@ class NewsFetcher:
             "q": keyword,
             "from": from_date,
             "to": to_date,
-            "language": config.LANGUAGE,
             "sortBy": "publishedAt",
             "apiKey": self.api_key,
             "pageSize": config.MAX_ARTICLES_PER_CATEGORY,
